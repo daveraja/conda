@@ -1,0 +1,36 @@
+{% set name = 'asphelper' %}
+{% set version = '0.0.1' %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  git_url: https://github.com/daveraja/{{ name }}.git
+
+requirements:
+  build:
+    - clingo >=5.3.0
+    - python >=3.6
+    - setuptools
+  run:
+    - clingo >=5.3.0
+    - python >=3.6
+
+build:
+  noarch: python
+  script:
+    - python setup.py install --single-version-externally-managed --record record.txt
+
+test:
+  imports:
+    - asphelper
+
+about:
+  home:  https://github/github.com/daveraja/{{ name }}
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Support utilities for the Clingo ASP Solver
+  doc_url: https://github.com/daveraja/{{ name }}
+  dev_url: https://github.com/daveraja/{{ name }}
